@@ -1,0 +1,45 @@
+.homeContainer {
+	grid-column-start: 2 !important;
+
+}
+
+.logoContainer {
+	margin-top: 3.34vw;
+	margin-left: 5vw;
+	width: 6.8vw;
+	height: 6.07vw;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.triContainer {
+	img {
+		width: 32.5vw;
+	}
+}
+
+.nameContainer {
+	font-size: 6rem;
+	margin-top: 15.625vw;
+}
+
+.mtTrContainer {
+	position: absolute;
+	grid-column-start: 8;
+	top: 143px;
+	z-index: -1;
+	right: 8.3vw;
+	div {
+		position: absolute;
+		z-index: 2;
+		font-size: 36px;
+		left: 27.56%;
+		bottom: 35.13%;
+	}
+}
+
+.subTitle {
+    font-size: 40px;
+}

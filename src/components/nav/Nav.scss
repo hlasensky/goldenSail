@@ -1,0 +1,33 @@
+@use "../../index.scss";
+
+.lLine {
+	border: 1px solid index.$font-color-25;
+	width: 0px;
+	height: 10vh;
+    margin-left: calc(51%);
+}
+
+.sLine {
+	border: 1px solid index.$font-color-25;
+	width: 0px;
+	height: 5vh;
+    margin-left: calc(51%);
+}
+
+.textNav {
+	font-size: 24px;
+    transform: rotate(-90deg);   
+    text-align: center;
+    margin: 16px 16px;
+    color: index.$font-color-50;
+}
+
+.navContainer {
+    position: fixed;
+    right: -5px;
+    height: 90vh;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

@@ -1,0 +1,26 @@
+@use '../../index.scss';
+
+.spacerContainer {
+    width: 300px;
+    height: 21px;
+    position: relative;
+    margin-top: 31px;
+    margin-bottom: 38px;
+}
+
+@mixin theme() {
+    height: 2px;
+    width: 175px !important;
+    background-color: index.$gold-color ;
+  }
+
+.hrOne {
+    @include theme;
+    margin-bottom: 21px;
+}
+
+.hrTwo {
+    @include theme;
+    right: 0;
+    position: absolute;
+}

@@ -1,0 +1,13 @@
+@use '../../index.scss';
+
+.title {
+    font-size: 48px;
+    text-transform: uppercase;
+    text-align: center;
+    
+}
+
+.titleContainer {
+    width: fit-content;
+    margin: 34.7vh auto 0 auto;
+}

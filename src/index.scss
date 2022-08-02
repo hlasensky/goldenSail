@@ -1,0 +1,33 @@
+$background-color: #071125;
+$font-color: #dbebff;
+$font-color-50: #dbebff50;
+$font-color-25: #dbebff25;
+$card-color: #0c2144;
+$gold-color: #c08d2c;
+
+$font: "Inter", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+	"Droid Sans", "Helvetica Neue", sans-serif;
+
+body {
+	width: 100%;
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, $font;
+	color: $font-color;
+	background-color: $background-color;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: 0.035em;
+
+}
+::-webkit-scrollbar {
+	width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	box-shadow: inset 0 0 6px #133e7a;
+	background-color: #123463a2;
+}
