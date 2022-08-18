@@ -1,5 +1,5 @@
 import { useInView } from "react-intersection-observer";
-import { activeNav } from "../../actions";
+import { activeNav, sendEmail } from "../../actions";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 
@@ -8,7 +8,7 @@ import Socials from "../../components/socials/Socials";
 
 import "./Contact.scss";
 
-const Contact = ({ activeNav }) => {
+const Contact = ({ activeNav, sendEmail }) => {
 	const { ref: myRef, inView: myElementIsVisible } = useInView();
 	useEffect(() => {
 		if (myElementIsVisible) {
@@ -30,7 +30,11 @@ const Contact = ({ activeNav }) => {
 				</div>
 
 				<div className="socialHalf">
-					<form className="contactForm" name="contact">
+					<form
+						className="contactForm"
+						onSubmit={sendEmail()}
+						name="contact"
+					>
 						<div className="contactInputs">
 							<input
 								required
@@ -74,7 +78,7 @@ const Contact = ({ activeNav }) => {
 };
 
 const mapStateToProps = (state) => {
-	return { active: state.active };
+	return { active: state.active, email: state.email };
 };
 
-export default connect(mapStateToProps, { activeNav })(Contact);
+export default connect(mapStateToProps, { activeNav, sendEmail })(Contact);

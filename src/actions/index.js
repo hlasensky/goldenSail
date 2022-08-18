@@ -14,14 +14,15 @@ const _FetchRepos = _.memoize((dispatch) => {
 	});
 });
 
-export const activeNav = (nav) => {
+export const activeNav = (nav) =>  {
 	return {
 		type: "ACTIVE_NAV",
 		payload: nav,
 	};
 };
 
-export const sendEmail = (e) => {
+export const sendEmail = (e) => (dispatch) => {
+	console.log(e)
 	e.preventDefault();
 	emailjs
 		.sendForm(
@@ -33,10 +34,10 @@ export const sendEmail = (e) => {
 		.then(
 			(result) => {
 				console.log(result.text);
-				return {
+				dispatch({
 					type: "SEND_EMAIL",
 					payload: result.text,
-				};
+				});
 			},
 			(error) => {
 				console.log(error.text);
