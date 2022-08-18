@@ -28,7 +28,7 @@ export const sendEmail = (e) => (dispatch) => {
 			"service_nl60pke",
 			"template_wfk0cag",
 			e.target,
-			process.env.REACT_APP_YOUR_USER_ID
+			process.env.PUBLIC_KEY
 		)
 		.then(
 			(result) => {
