@@ -1,5 +1,6 @@
 $background-color: #071125;
 $font-color: #dbebff;
+$font-color-doll: #dbebffb4;
 $font-color-50: #dbebff50;
 $font-color-25: #dbebff25;
 $card-color: #0c2144;
@@ -7,6 +8,10 @@ $gold-color: #c08d2c;
 
 $font: "Inter", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
 	"Droid Sans", "Helvetica Neue", sans-serif;
+
+html {
+	scroll-behavior: smooth;
+}
 
 body {
 	width: 100%;
@@ -22,6 +27,13 @@ body {
 	letter-spacing: 0.035em;
 
 }
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+
 ::-webkit-scrollbar {
 	width: 3px;
 }

@@ -1,12 +1,46 @@
+import _ from "lodash";
+import emailjs from "@emailjs/browser";
+
 import github from "../apis/github";
 
-export const fetchRepos = () => (dispatch) => {
-    console.log(1)
-    github.get("/repos/hlasensky").then((res) => {
-        console.log(res)
+export const fetchRepos = () => (dispatch) => _FetchRepos(dispatch);
+const _FetchRepos = _.memoize((dispatch) => {
+	github.get("/users/hlasensky/repos").then((res) => {
+		const fetchData = res.data.sort((a, b) => b.id - a.id);
 		dispatch({
 			type: "FETCH_REPOS",
-			payload: res,
+			payload: fetchData,
 		});
 	});
+});
+
+export const activeNav = (nav) => {
+	return {
+		type: "ACTIVE_NAV",
+		payload: nav,
+	};
+};
+
+export const sendEmail = (e) => {
+	e.preventDefault();
+	emailjs
+		.sendForm(
+			"service_nl60pke",
+			"template_wfk0cag",
+			e.target,
+			process.env.REACT_APP_YOUR_USER_ID
+		)
+		.then(
+			(result) => {
+				console.log(result.text);
+				return {
+					type: "SEND_EMAIL",
+					payload: result.text,
+				};
+			},
+			(error) => {
+				console.log(error.text);
+			}
+		);
+	e.target.reset();
 };

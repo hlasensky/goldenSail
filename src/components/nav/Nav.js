@@ -1,21 +1,41 @@
-import "./Nav.scss"
+import { connect } from "react-redux";
 
-const Nav = () => {
-    return ( 
-        <div className="navContainer">
-            <hr className="lLine"></hr>
-            <div className="textNav">home</div>
-            <hr className="sLine"></hr>
-            <div className="textNav">about</div>
-            <hr className="sLine"></hr>
-            <div className="textNav">projects</div>
-            <hr className="sLine"></hr>
-            <div className="textNav">contact</div>
-            <hr className="lLine"></hr>            
-        </div>
+import "./Nav.scss";
 
+const Nav = ({active}) => {
+	return (
+		<div className="navContainer">
+			<hr className="lLine"></hr>
+			<div className="textNavContainer">
+				<div className={active === "home" ? "textNav active" : "textNav" }>
+					<a href="#home">home</a>
+				</div>
+			</div>
+			<hr className="sLine"></hr>
+			<div className="textNavContainer">
+				<div className={active === "about" ? "textNav active" : "textNav" }>
+					<a href="#about me">about</a>
+				</div>
+			</div>
+			<hr className="sLine"></hr>
+			<div className="textNavContainer">
+				<div className={active === "projects" ? "textNav active" : "textNav" }>
+					<a href="#projects">projects</a>
+				</div>
+			</div>
+			<hr className="sLine"></hr>
+			<div className="textNavContainer">
+				<div className={active === "contact" ? "textNav active" : "textNav" }>
+					<a href="#contact">contact</a>
+				</div>
+			</div>
+			<hr className="lLine"></hr>
+		</div>
+	);
+};
 
-     );
-}
+const mapStateToProps = (state) => {
+	return { active: state.active };
+};
 
-export default Nav;
+export default connect(mapStateToProps)(Nav);

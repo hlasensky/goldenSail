@@ -1,8 +1,9 @@
-import { combineReducers } from "redux"
+import { combineReducers } from "redux";
 
-import reposReducer from "./reposReducer"
-
+import reposReducer from "./reposReducer";
+import activeNavReducer from "./activeNavReducer";
 
 export default combineReducers({
-    repos: reposReducer
-})
+	repos: reposReducer,
+	active: activeNavReducer,
+});

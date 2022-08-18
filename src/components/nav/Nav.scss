@@ -3,23 +3,30 @@
 .lLine {
 	border: 1px solid index.$font-color-25;
 	width: 0px;
-	height: 10vh;
+	height: 10%;
     margin-left: calc(51%);
 }
 
 .sLine {
 	border: 1px solid index.$font-color-25;
 	width: 0px;
-	height: 5vh;
+	height: 5%;
     margin-left: calc(51%);
 }
 
 .textNav {
 	font-size: 24px;
-    transform: rotate(-90deg);   
+    transform: rotate(180deg);   
     text-align: center;
-    margin: 16px 16px;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: visible;
     color: index.$font-color-50;
+}
+
+.textNavContainer {
+    margin: 16px 16px;  
 }
 
 .navContainer {
@@ -29,5 +36,9 @@
     margin-top: 5vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
+}
+
+.active {
+    color: index.$font-color;
 }

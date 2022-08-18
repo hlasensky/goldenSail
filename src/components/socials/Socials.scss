@@ -1,0 +1,20 @@
+@use '../../index.scss';
+
+
+.socialsContainer {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.icon {
+    width: 45px;
+    height: auto;
+}
+
+.socialText {
+    margin-left: 50px;
+    font-size: 1.5rem;
+}
+

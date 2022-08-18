@@ -1,0 +1,24 @@
+.projectSpan {
+    position: relative;
+}
+
+.triProContainer {
+	img {
+		width: 32.5vw;
+	}
+}
+
+.mtTrProContainer {
+	position: absolute;
+	grid-column-start: 8;
+	top: 40%;
+	z-index: -1;
+	left: 0;
+	div {
+		position: absolute;
+		z-index: 2;
+		font-size: 36px;
+		left: 27.56%;
+		bottom: 35.13%;
+	}
+}

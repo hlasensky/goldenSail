@@ -1,1 +1,49 @@
-@use '../../index.scss';
+@use "../spacer/Spacer.scss";
+@use "../../index.scss";
+
+.cardContainer {
+	background-color: index.$card-color;
+	padding: 15% 12% 20%;
+	position: relative;
+	border-radius: 0.2vw;
+}
+
+.hr {
+	@include Spacer.theme;
+	right: -40px;
+	bottom: 20px;
+	position: absolute;
+	transform: rotate(180deg);
+}
+
+.ball {
+	background: #c08d2c;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	left: 5%;
+	top: 10%;
+	border-radius: 50px;
+}
+
+.cardName {
+	font-size: 1.5rem;
+	margin-bottom: 12px;
+}
+
+.cardDescription {
+	font-size: 0.9rem;
+	color: index.$font-color-doll;
+	line-height: 1.25rem;
+}
+
+.buttonCard {
+	color: index.$font-color-50;
+	right: 50px;
+	bottom: 22px;
+	position: absolute;
+	transition: 150ms;
+	:hover > &{
+		color: index.$font-color-doll;
+	}
+}

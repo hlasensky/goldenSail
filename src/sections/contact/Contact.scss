@@ -1,0 +1,52 @@
+@use '../../index.scss';
+
+.contact {
+    position: relative;
+}
+.contactContainer {
+    padding: 0 17vw 10vw 17vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.socialHalf {
+    width: 50%;
+    min-width: 500px;
+}
+
+.triConContainer {
+	img {
+		width: 32.5vw;
+	}
+}
+
+.mtTrConContainer {
+	position: absolute;
+	grid-column-start: 8;
+	bottom: -5px;
+	z-index: -1;
+	right: 6vw;
+	div {
+		position: absolute;
+		z-index: 2;
+		font-size: 36px;
+		left: 27.56%;
+		bottom: 35.13%;
+	}
+}
+
+.contactForm {
+    width: 100%;
+}
+
+.inp {
+    width: 100%;
+    background: none;
+    border: none;
+    margin-top: 32px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid index.$font-color-50;
+    resize: none;
+}
