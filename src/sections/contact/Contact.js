@@ -1,7 +1,8 @@
 import { useInView } from "react-intersection-observer";
 import { activeNav, sendEmail } from "../../actions";
 import { connect } from "react-redux";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useSpring, animated } from "@react-spring/web";
 
 import Title from "../../components/title/Title";
 import Socials from "../../components/socials/Socials";
@@ -9,7 +10,17 @@ import Socials from "../../components/socials/Socials";
 import "./Contact.scss";
 
 const Contact = ({ activeNav, sendEmail }) => {
-	const refForm = useRef()
+	const [enter, setEnter] = useState(true);
+	const props = useSpring({
+		opacity: enter ? " 1" : "0",
+	});
+	const props2 = useSpring({
+		bottom: enter ? -5 : 4,
+		right: enter ? -25 : -20,
+		transform: enter ? " rotate(180deg) translateX(0px) scale(0.1)" : "rotate(0deg) translateX(25px) scale(1)",
+	});
+
+	const refForm = useRef();
 
 	const { ref: myRef, inView: myElementIsVisible } = useInView();
 	useEffect(() => {
@@ -62,9 +73,23 @@ const Contact = ({ activeNav, sendEmail }) => {
 							rows="5"
 						></textarea>
 						<br />
-						<button className="submit" type="submit">
+						<animated.button
+							onMouseEnter={() => setEnter(!enter)}
+							onMouseLeave={() => setEnter(!enter)}
+							className="submit"
+							type="submit"
+						>
+							<animated.div
+								style={props}
+								className="submitBall"
+							></animated.div>
+							<animated.img
+								src="./arrow.svg"
+								style={props2}
+								className="arrow"
+							></animated.img>
 							send
-						</button>
+						</animated.button>
 					</form>
 				</div>
 			</div>

@@ -48,5 +48,48 @@
     margin-top: 32px;
     font-size: 1.5rem;
     border-bottom: 2px solid index.$font-color-50;
+    color: index.$font-color;
     resize: none;
+
+}
+
+.inp:focus {
+    background: index.$font-color-10;
+    outline:none;
+}
+
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-image: none !important;
+    background: none !important;
+    color: index.$font-color !important;
+}
+
+.submit {
+    margin-top: 20px;
+    position: relative;
+    background: none;
+    border: none;
+    color: index.$font-color-50;
+    font-size: 1.7rem;
+    padding: 0;
+}
+
+.submitBall {
+	background: #c08d2c;
+	width: 4px;
+	height: 4px;
+	position: absolute;
+	right: -10px;
+	bottom: 5px;
+	border-radius: 50px;
+}
+
+.arrow {
+    width: 32px;
+    height: auto;
+	position: absolute;
+	right: -25px;
+	bottom: -5px;
+	border-radius: 50px;
 }
