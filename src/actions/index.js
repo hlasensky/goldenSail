@@ -23,8 +23,8 @@ export const activeNav = (nav) => {
 
 export const sendEmail = (e) => (dispatch) => {
 	const envVar = process.env.REACT_APP_PUBLIC_KEY;
-	console.log(envVar);
 	e.preventDefault();
+
 	emailjs
 		.sendForm("service_nl60pke", "template_wfk0cag", e.target, envVar)
 		.then(
