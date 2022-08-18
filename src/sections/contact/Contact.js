@@ -1,7 +1,7 @@
 import { useInView } from "react-intersection-observer";
 import { activeNav, sendEmail } from "../../actions";
 import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import Title from "../../components/title/Title";
 import Socials from "../../components/socials/Socials";
@@ -9,6 +9,8 @@ import Socials from "../../components/socials/Socials";
 import "./Contact.scss";
 
 const Contact = ({ activeNav, sendEmail }) => {
+	const refForm = useRef()
+
 	const { ref: myRef, inView: myElementIsVisible } = useInView();
 	useEffect(() => {
 		if (myElementIsVisible) {
@@ -32,8 +34,9 @@ const Contact = ({ activeNav, sendEmail }) => {
 				<div className="socialHalf">
 					<form
 						className="contactForm"
-						onSubmit={sendEmail()}
+						onSubmit={sendEmail}
 						name="contact"
+						ref={refForm}
 					>
 						<div className="contactInputs">
 							<input

@@ -14,7 +14,7 @@ const _FetchRepos = _.memoize((dispatch) => {
 	});
 });
 
-export const activeNav = (nav) =>  {
+export const activeNav = (nav) => {
 	return {
 		type: "ACTIVE_NAV",
 		payload: nav,
@@ -22,7 +22,6 @@ export const activeNav = (nav) =>  {
 };
 
 export const sendEmail = (e) => (dispatch) => {
-	console.log(e)
 	e.preventDefault();
 	emailjs
 		.sendForm(
