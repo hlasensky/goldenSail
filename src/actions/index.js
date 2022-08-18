@@ -22,6 +22,7 @@ export const activeNav = (nav) => {
 };
 
 export const sendEmail = (e) => (dispatch) => {
+	console.log(process.env.PUBLIC_KEY)
 	e.preventDefault();
 	emailjs
 		.sendForm(
