@@ -1,6 +1,5 @@
 .homeContainer {
 	grid-column-start: 2 !important;
-
 }
 
 .logoContainer {
@@ -21,8 +20,18 @@
 }
 
 .nameContainer {
-	font-size: 6rem;
-	margin-top: 15.625vw;
+	h1 {
+		font-size: 6rem;
+		margin-top: 15.625vw;
+		font-weight: 400;
+	}
+}
+
+.miniTitle {
+	h2 {
+		font-weight: 400;
+		font-size: 2.25rem;
+	}
 }
 
 .mtTrContainer {
@@ -41,5 +50,5 @@
 }
 
 .subTitle {
-    font-size: 40px;
+	font-size: 40px;
 }

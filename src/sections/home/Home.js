@@ -19,15 +19,15 @@ const Home = ({ activeNav }) => {
 		<div ref={myRef} id="home" className="section homeContainer">
 			<div>
 				<div className="nameContainer">
-					TOMÁŠ
+					<h1>TOMÁŠ
 					<br />
-					HLÁSENSKÝ
+					HLÁSENSKÝ</h1>
 				</div>
 				<Spacer />
 				<div className="subTitle">web designer / programmer</div>
 			</div>
 			<div className="mtTrContainer">
-				<div className="miniTitle">PORTFOLIO</div>
+				<div className="miniTitle"><h2>PORTFOLIO</h2></div>
 				<img
 					className="triContainer"
 					src="./mid-tri.svg"
