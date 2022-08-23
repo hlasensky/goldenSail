@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchRepoLanguage } from "../../actions/index";
+import { fetchRepoMoreDetail } from "../../actions/index";
 
 import Card from "../card/Card";
 
@@ -12,12 +12,15 @@ const CardDetail = ({
 	description,
 	html_url,
 	languages_url,
-	fetchRepoLanguage,
+	deployments_url,
+	fetchRepoMoreDetail,
 	languages,
+	deployments,
 }) => {
 	useEffect(() => {
-		fetchRepoLanguage(languages_url);
-	}, [fetchRepoLanguage, languages_url]);
+		fetchRepoMoreDetail(languages_url);
+		fetchRepoMoreDetail(deployments_url);
+	}, [fetchRepoMoreDetail, deployments_url, languages_url]);
 
 	return (
 		<div>
@@ -28,6 +31,7 @@ const CardDetail = ({
 				description={description}
 				html_url={html_url}
 				languages={languages}
+				deployments={deployments}
 			/>
 		</div>
 	);
@@ -36,7 +40,8 @@ const CardDetail = ({
 const mapStateToProps = (state) => {
 	return {
 		languages: state.languages,
+		deployments: state.deployments,
 	};
 };
 
-export default connect(mapStateToProps, { fetchRepoLanguage })(CardDetail);
+export default connect(mapStateToProps, { fetchRepoMoreDetail })(CardDetail);

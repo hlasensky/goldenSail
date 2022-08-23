@@ -12,9 +12,8 @@ const Card = (props) => {
 
 	const showChart = () => {
 		if (props.languages) {
-
 			return (
-				<div className="cardDescription">
+				<div className="cardChart">
 					<Chart languages={props.languages } />
 				</div>
 			);

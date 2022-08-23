@@ -14,10 +14,11 @@ const _FetchRepos = _.memoize((dispatch) => {
 	});
 });
 
-export const fetchRepoLanguage = (languages_url) => (dispatch) =>
-	_fetchRepoLanguage(languages_url, dispatch);
-const _fetchRepoLanguage = _.memoize((languages_url, dispatch) => {
-	github.get(languages_url).then((res) => {
+export const fetchRepoMoreDetail = (url) => (dispatch) =>
+	_fetchRepoMoreDetail(url, dispatch);
+const _fetchRepoMoreDetail = _.memoize((url, dispatch) => {
+	github.get(url).then((res) => {
+		console.log(res.data)
 		dispatch({
 			type: "FETCH_REPO_LANGUAGES",
 			payload: res.data,
