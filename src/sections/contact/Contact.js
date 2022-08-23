@@ -17,7 +17,9 @@ const Contact = ({ activeNav, sendEmail }) => {
 	const props2 = useSpring({
 		bottom: enter ? -5 : 4,
 		right: enter ? -25 : -20,
-		transform: enter ? " rotate(180deg) translateX(0px) scale(0.1)" : "rotate(0deg) translateX(25px) scale(1)",
+		transform: enter
+			? " rotate(180deg) translateX(0px) scale(0.1)"
+			: "rotate(0deg) translateX(25px) scale(1)",
 	});
 
 	const refForm = useRef();
@@ -34,11 +36,20 @@ const Contact = ({ activeNav, sendEmail }) => {
 			<Title title={"contact"} />
 			<div className="contactContainer">
 				<div ref={myRef} className="socialHalf">
-					<Socials icon={"./github.svg"} text={"hlasensky"} />
-					<Socials icon={"./instagram.svg"} text={"@_hlasensky_"} />
+					<Socials
+						icon={"./github.svg"}
+						text={"hlasensky"}
+						url={"https://github.com/hlasensky"}
+					/>
+					<Socials
+						icon={"./instagram.svg"}
+						text={"@_hlasensky_"}
+						url={"https://www.instagram.com/_hlasensky_/"}
+					/>
 					<Socials
 						icon={"./email.svg"}
 						text={"tomas.hlasensky@seznam.cz"}
+						url={"mailto: tomas.hlasensky@seznam.cz"}
 					/>
 				</div>
 

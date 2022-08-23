@@ -14,10 +14,32 @@ const _FetchRepos = _.memoize((dispatch) => {
 	});
 });
 
+export const fetchRepoLanguage = (languages_url) => (dispatch) =>
+	_fetchRepoLanguage(languages_url, dispatch);
+const _fetchRepoLanguage = _.memoize((languages_url, dispatch) => {
+	github.get(languages_url).then((res) => {
+		dispatch({
+			type: "FETCH_REPO_LANGUAGES",
+			payload: res.data,
+		});
+	});
+});
+
 export const activeNav = (nav) => {
 	return {
 		type: "ACTIVE_NAV",
 		payload: nav,
+	};
+};
+
+export const projectDetail = (projectID, repos) => {
+	const clickedProject = repos.filter((repo) => repo.id === projectID);
+	const newRepos = [
+		...repos.filter((repo) => repo.id !== clickedProject[0].id),
+	];
+	return {
+		type: "OPEN_PROJECT",
+		payload: { clickedProject: clickedProject[0], newRepos },
 	};
 };
 
