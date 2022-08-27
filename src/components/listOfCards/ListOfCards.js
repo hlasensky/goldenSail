@@ -1,26 +1,39 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import { fetchRepos } from "../../actions/index";
+import useMeasure from "react-use-measure";
 
 import Card from "../card/Card";
 import CardDetail from "../cardDetail/CardDetail";
 
 import "./ListOfCards.scss";
 
-class ListOfCards extends React.Component {
-	componentDidMount() {
-		this.props.fetchRepos();
-	}
+const ListOfCards = (props) => {
+	const [ref, { height }] = useMeasure();
 
-	mapCards(repos) {
+	const fetchRepos = useCallback(() => {
+		props.fetchRepos();
+	});
+
+	useEffect(() => {
+		fetchRepos();
+	}, [fetchRepos]);
+
+	const mapCards = (repos) => {
 		return repos.map(({ id, name, description }) => {
 			return (
 				<Card key={id} id={id} name={name} description={description} />
 			);
 		});
-	}
+	};
 
-	mapCardsPlusDetail({ id, name, description, html_url, languages_url }) {
+	const mapCardsPlusDetail = ({
+		id,
+		name,
+		description,
+		html_url,
+		languages_url,
+	}) => {
 		return (
 			<CardDetail
 				key={id}
@@ -31,30 +44,25 @@ class ListOfCards extends React.Component {
 				languages_url={languages_url}
 			/>
 		);
-	}
+	};
 
-	render() {
-		if (!this.props.projectDetail.id) {
-			return (
-				<div className="cardListContainer">
-					{this.mapCards(this.props.repos)}
+	if (!props.projectDetail.id) {
+		return <div className="cardListContainer">{mapCards(props.repos)}</div>;
+	} else {
+		return (
+			<div className="cardListContainerDetail">
+				<div style={{ height: height }} className="scrollReps">
+					{mapCards(props.newRepos)}
 				</div>
-			);
-		} else {
-			return (
-				<div className="cardListContainerDetail">
-					<div className="scrollReps">
-						{this.mapCards(this.props.newRepos)}
-					</div>
-					<div className="detailRep">
-						{this.mapCardsPlusDetail(this.props.projectDetail)}
-					</div>
+				<div ref={ref} className="detailRep">
+					{mapCardsPlusDetail(props.projectDetail)}
 				</div>
-			);
-		}
+			</div>
+		);
 	}
-}
+};
 const mapStateToProps = (state) => {
+	console.log(state);
 	return {
 		repos: state.repos,
 		projectDetail: state.projectDetail.clickedProject,

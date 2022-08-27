@@ -1,5 +1,6 @@
 import _ from "lodash";
 import emailjs from "@emailjs/browser";
+import { Buffer } from "buffer";
 
 import github from "../apis/github";
 
@@ -11,19 +12,43 @@ const _FetchRepos = _.memoize((dispatch) => {
 			type: "FETCH_REPOS",
 			payload: fetchData,
 		});
+	}).catch((err) => {
+		dispatch({
+			type: "FETCH_REPOS",
+			payload: [],
+		});
 	});
 });
 
 export const fetchRepoMoreDetail = (url) => (dispatch) =>
 	_fetchRepoMoreDetail(url, dispatch);
 const _fetchRepoMoreDetail = _.memoize((url, dispatch) => {
-	github.get(url).then((res) => {
-		console.log(res.data)
-		dispatch({
-			type: "FETCH_REPO_LANGUAGES",
-			payload: res.data,
+	github
+		.get(url)
+		.then((res) => {
+			if (!res.data.content) {
+				dispatch({
+					type: "FETCH_REPO_LANGUAGES",
+					payload: res.data,
+				});
+			} else {
+				const content = Buffer.from(
+					res.data.content,
+					"base64"
+				).toString();
+				const str = JSON.parse(content);
+				dispatch({
+					type: "FETCH_REPO_TECHNOLOGIES",
+					payload: str.dependencies,
+				});
+			}
+		})
+		.catch((err) => {
+			dispatch({
+				type: "FETCH_REPO_TECHNOLOGIES",
+				payload: {},
+			});
 		});
-	});
 });
 
 export const activeNav = (nav) => {

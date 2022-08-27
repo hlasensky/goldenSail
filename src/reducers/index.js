@@ -5,6 +5,7 @@ import activeNavReducer from "./activeNavReducer";
 import emailReducer from "./emailReducer";
 import projectOpenReducer from "./projectOpenReducer";
 import repoLanguageReducer from "./repoLanguageReducer";
+import repoTechnologiesReducer from "./repoTechnologiesReducer";
 
 export default combineReducers({
 	repos: reposReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
 	email: emailReducer,
 	projectDetail: projectOpenReducer,
 	languages: repoLanguageReducer,
+	technologies: repoTechnologiesReducer,
 });

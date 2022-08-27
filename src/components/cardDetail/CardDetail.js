@@ -16,14 +16,18 @@ const CardDetail = ({
 	fetchRepoMoreDetail,
 	languages,
 	deployments,
+	screenShot,
+	technologies,
 }) => {
 	useEffect(() => {
 		fetchRepoMoreDetail(languages_url);
-		fetchRepoMoreDetail(deployments_url);
-	}, [fetchRepoMoreDetail, deployments_url, languages_url]);
+		/*fetchRepoMoreDetail(deployments_url);*/
+		fetchRepoMoreDetail(
+			`https://api.github.com/repos/hlasensky/${name}/contents/package.json`
+		);
+	}, [fetchRepoMoreDetail, deployments_url, languages_url, name]);
 
 	return (
-		<div>
 			<Card
 				key={id}
 				id={id}
@@ -32,8 +36,9 @@ const CardDetail = ({
 				html_url={html_url}
 				languages={languages}
 				deployments={deployments}
+				screenShot={screenShot}
+				technologies={technologies}
 			/>
-		</div>
 	);
 };
 
@@ -41,6 +46,7 @@ const mapStateToProps = (state) => {
 	return {
 		languages: state.languages,
 		deployments: state.deployments,
+		technologies: state.technologies,
 	};
 };
 

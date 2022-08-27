@@ -24,7 +24,7 @@ const Chart = ({ languages }) => {
 	const data = languageState;
 	const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 	return (
-		<PieChart width={400} height={200}>
+		<PieChart width={300} height={200}>
 			<Pie
 				data={data}
 				innerRadius={40}

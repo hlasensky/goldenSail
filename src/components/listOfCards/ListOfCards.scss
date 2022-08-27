@@ -13,14 +13,19 @@
     grid-template-columns: 1.2fr 2fr;
     padding: 0 13vw;
     row-gap: 8vw;
-    column-gap: 3vw
+    column-gap: 3vw;
+    transition: all 300ms ease;
 }
 
 .scrollReps {
-    max-height: 60vh;
+    height: 600px;
     overflow: scroll;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    padding-right: 40px;
+    padding-right: 50px;
+}
+
+.detailRep {
+    height: fit-content;
 }
