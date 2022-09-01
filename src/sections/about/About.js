@@ -19,10 +19,10 @@ const About = ({ activeNav }) => {
 		<div className="section about">
 			<Title title={"about me"} />
 			<img className="lines" src="./lines.svg" alt="lines" />
-			<p className="aboutContent">
+			<p ref={myRef} className="aboutContent">
 				I am capable and responsible student eager for experience and
 				knowledge
-				<span ref={myRef} className="gold">
+				<span className="gold">
 					.
 				</span>{" "}
 				Learning new things and then implementing them is not a problem
@@ -37,6 +37,7 @@ const About = ({ activeNav }) => {
 };
 
 const mapStateToProps = (state) => {
+	console.log(state.active)
 	return { active: state.active };
 };
 

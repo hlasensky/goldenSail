@@ -16,9 +16,9 @@ const Home = ({ activeNav }) => {
 	}, [myElementIsVisible, activeNav]);
 
 	return (
-		<div ref={myRef} id="home" className="section homeContainer">
+		<div  id="home" className="section homeContainer">
 			<div>
-				<div className="nameContainer">
+				<div ref={myRef} className="nameContainer">
 					<h1>TOMÁŠ
 					<br />
 					HLÁSENSKÝ</h1>

@@ -6,10 +6,12 @@ import { useEffect } from "react";
 import ListOfCards from "../../components/listOfCards/ListOfCards";
 import Title from "../../components/title/Title";
 
-import "./Projects.scss"
+import "./Projects.scss";
 
 const Projects = ({ activeNav }) => {
-	const { ref: myRef, inView: myElementIsVisible } = useInView();
+	const { ref: myRef, inView: myElementIsVisible } = useInView({
+		threshold: 0,
+	});
 	useEffect(() => {
 		if (myElementIsVisible) {
 			activeNav("projects");
@@ -19,8 +21,10 @@ const Projects = ({ activeNav }) => {
 	return (
 		<div className="section projects">
 			<Title title={"projects"} />
-			<span className="projectSpan" ref={myRef}>
-				<ListOfCards />
+			<span className="projectSpan">
+				<span ref={myRef}>
+					<ListOfCards />
+				</span>
 				<div className="mtTrProContainer">
 					<img
 						className="triProContainer"
