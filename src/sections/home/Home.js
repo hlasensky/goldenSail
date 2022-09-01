@@ -8,7 +8,9 @@ import Spacer from "../../components/spacer/Spacer";
 import "./Home.scss";
 
 const Home = ({ activeNav }) => {
-	const { ref: myRef, inView: myElementIsVisible } = useInView();
+	const { ref: myRef, inView: myElementIsVisible } = useInView({
+		threshold: 0,
+	  });
 	useEffect(() => {
 		if (myElementIsVisible) {
 			activeNav("home");

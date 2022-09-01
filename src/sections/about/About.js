@@ -8,7 +8,9 @@ import Title from "../../components/title/Title";
 import "./About.scss";
 
 const About = ({ activeNav }) => {
-	const { ref: myRef, inView: myElementIsVisible } = useInView();
+	const { ref: myRef, inView: myElementIsVisible } = useInView({
+		threshold: 0,
+	  });
 	useEffect(() => {
 		if (myElementIsVisible) {
 			activeNav("about");
