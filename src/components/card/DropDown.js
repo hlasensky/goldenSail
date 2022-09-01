@@ -1,8 +1,6 @@
 import {
 	useTransition,
-	useSpring,
 	useChain,
-	config,
 	animated,
 	useSpringRef,
 } from "@react-spring/web";
