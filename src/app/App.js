@@ -10,7 +10,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<div className="logoContainer">
-				<img src="./logo.svg" alt="Logo" />
+				<a href="#home"><img  src="./logo.svg" alt="Logo" /></a>
 			</div>
 			<Home />
 			<About />
