@@ -55,6 +55,7 @@ const ListOfCards = ({ fetchRepos, newRepos, projectDetail, repos }) => {
 		);
 	}
 };
+
 const mapStateToProps = (state) => {
 	return {
 		repos: state.repos,

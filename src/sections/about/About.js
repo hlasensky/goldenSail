@@ -9,7 +9,7 @@ import "./About.scss";
 
 const About = ({ activeNav }) => {
 	const { ref: myRef, inView: myElementIsVisible } = useInView({
-		threshold: 0,
+		threshold: 0.01,
 	  });
 	useEffect(() => {
 		if (myElementIsVisible) {
@@ -21,16 +21,15 @@ const About = ({ activeNav }) => {
 		<div className="section about">
 			<Title title={"about me"} />
 			<img className="lines" src="./lines.svg" alt="lines" />
-			<p ref={myRef} className="aboutContent">
+			<p  className="aboutContent">
 				I am capable and responsible student eager for experience and
 				knowledge
 				<span className="gold">
-					.
-				</span>{" "}
-				Learning new things and then implementing them is not a problem
+				.
+				</span> Learning new things and then implementing them is not a problem
 				for me
 				<span className="gold">.</span> I am communicative
-				<span className="gold">,</span> hardworking
+				<span ref={myRef} className="gold">,</span> hardworking
 				<span className="gold">,</span> I like to work in a team or
 				independently<span className="gold">.</span>
 			</p>

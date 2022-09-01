@@ -9,7 +9,7 @@ import "./Home.scss";
 
 const Home = ({ activeNav }) => {
 	const { ref: myRef, inView: myElementIsVisible } = useInView({
-		threshold: 0.2,
+		threshold: 0.3,
 	  });
 	useEffect(() => {
 		if (myElementIsVisible) {
@@ -20,8 +20,8 @@ const Home = ({ activeNav }) => {
 	return (
 		<div  id="home" className="section homeContainer">
 			<div>
-				<div ref={myRef} className="nameContainer">
-					<h1>TOMÁŠ
+				<div className="nameContainer">
+					<h1 ref={myRef}>TOMÁŠ
 					<br />
 					HLÁSENSKÝ</h1>
 				</div>
