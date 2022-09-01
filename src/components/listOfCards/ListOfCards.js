@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchRepos } from "../../actions/index";
 import useMeasure from "react-use-measure";
@@ -8,12 +8,10 @@ import CardDetail from "../cardDetail/CardDetail";
 
 import "./ListOfCards.scss";
 
-const ListOfCards = (props) => {
+const ListOfCards = ({fetchRepos,newRepos, projectDetail,repos }) => {
 	const [ref, { height }] = useMeasure();
 
-	const fetchRepos = useCallback(() => {
-		props.fetchRepos();
-	});
+
 
 	useEffect(() => {
 		fetchRepos();
@@ -46,16 +44,16 @@ const ListOfCards = (props) => {
 		);
 	};
 
-	if (!props.projectDetail.id) {
-		return <div className="cardListContainer">{mapCards(props.repos)}</div>;
+	if (!projectDetail.id) {
+		return <div className="cardListContainer">{mapCards(repos)}</div>;
 	} else {
 		return (
 			<div className="cardListContainerDetail">
 				<div style={{ height: height }} className="scrollReps">
-					{mapCards(props.newRepos)}
+					{mapCards(newRepos)}
 				</div>
 				<div ref={ref} className="detailRep">
-					{mapCardsPlusDetail(props.projectDetail)}
+					{mapCardsPlusDetail(projectDetail)}
 				</div>
 			</div>
 		);

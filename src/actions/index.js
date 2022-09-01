@@ -6,42 +6,35 @@ import github from "../apis/github";
 
 export const fetchRepos = () => (dispatch) => _FetchRepos(dispatch);
 const _FetchRepos = _.memoize((dispatch) => {
-	github.get("/users/hlasensky/repos").then((res) => {
-		const fetchData = res.data.sort((a, b) => b.id - a.id);
-		dispatch({
-			type: "FETCH_REPOS",
-			payload: fetchData,
+	github
+		.get("/users/hlasensky/repos")
+		.then((res) => {
+			const fetchData = res.data.sort((a, b) => b.id - a.id);
+			dispatch({
+				type: "FETCH_REPOS",
+				payload: fetchData,
+			});
+		})
+		.catch((err) => {
+			dispatch({
+				type: "FETCH_REPOS",
+				payload: [],
+			});
 		});
-	}).catch((err) => {
-		dispatch({
-			type: "FETCH_REPOS",
-			payload: [],
-		});
-	});
 });
 
-export const fetchRepoMoreDetail = (url) => (dispatch) =>
-	_fetchRepoMoreDetail(url, dispatch);
-const _fetchRepoMoreDetail = _.memoize((url, dispatch) => {
+export const fetchRepoTechnologies = (name) => (dispatch) =>
+	_fetchRepoTechnologies(name, dispatch);
+const _fetchRepoTechnologies = _.memoize((name, dispatch) => {
 	github
-		.get(url)
+		.get(`https://api.github.com/repos/hlasensky/${name}/contents/package.json`)
 		.then((res) => {
-			if (!res.data.content) {
-				dispatch({
-					type: "FETCH_REPO_LANGUAGES",
-					payload: res.data,
-				});
-			} else {
-				const content = Buffer.from(
-					res.data.content,
-					"base64"
-				).toString();
-				const str = JSON.parse(content);
-				dispatch({
-					type: "FETCH_REPO_TECHNOLOGIES",
-					payload: str.dependencies,
-				});
-			}
+			const content = Buffer.from(res.data.content, "base64").toString();
+			const str = JSON.parse(content);
+			dispatch({
+				type: "FETCH_REPO_TECHNOLOGIES",
+				payload: str.dependencies,
+			});
 		})
 		.catch((err) => {
 			dispatch({
@@ -50,6 +43,26 @@ const _fetchRepoMoreDetail = _.memoize((url, dispatch) => {
 			});
 		});
 });
+
+export const fetchRepoMoreDetail = (url) => (dispatch) =>
+	_fetchRepoMoreDetail(url, dispatch);
+const _fetchRepoMoreDetail = (url, dispatch) => {
+	github
+		.get(url)
+		.then((res) => {
+			console.log(url)
+			dispatch({
+				type: "FETCH_REPO_LANGUAGES",
+				payload: res.data,
+			});
+		})
+		.catch((err) => {
+			dispatch({
+				type: "FETCH_REPO_LANGUAGES",
+				payload: {},
+			});
+		});
+};
 
 export const activeNav = (nav) => {
 	return {
