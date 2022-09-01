@@ -10,8 +10,14 @@ import ShowTechnologies from "./Technologies";
 const Card = (props) => {
 	const [enter, setEnter] = useState(true);
 	const [technologies, setTechnologiesState] = useState([]);
+	const [windowWidth , setWindowWidth] = useState(1920);
 
 	const propsAnimation = useSpring({ width: enter ? 175 : 185 });
+	const propsAnimation2 = useSpring({ width: enter ? 100 : 120 });
+
+	useEffect(() => {
+		setWindowWidth(window.innerWidth)
+	}, [])
 
 	useEffect(() => {
 		if (props.technologies) {
@@ -49,6 +55,7 @@ const Card = (props) => {
 				<ShowTechnologies technologies={technologies} />
 			</div>
 			<animated.div
+				className="hrViewMore"
 				onMouseEnter={() => setEnter(!enter)}
 				onMouseLeave={() => setEnter(!enter)}
 				onClick={() => {
@@ -61,7 +68,7 @@ const Card = (props) => {
 			>
 				<div className="buttonCard">view more</div>
 				<animated.svg
-					style={propsAnimation}
+					style={windowWidth > 800 ? propsAnimation : propsAnimation2}
 					className="hr"
 				></animated.svg>
 			</animated.div>
