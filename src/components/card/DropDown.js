@@ -16,9 +16,9 @@ const DropDown = (props) => {
 		{
 			ref: transApi,
 			trail: 50,
-			from: { opacity: 0 },
-			enter: { opacity: 1 },
-			leave: { opacity: 0 },
+			from: { opacity: 0, display: "none" },
+			enter: { opacity: 1, display: "block" },
+			leave: { opacity: 0, display: "none" },
 		}
 	);
 
@@ -27,8 +27,8 @@ const DropDown = (props) => {
 		props.open ? 0.1 : 0.6,
 	]);
 
-	return propsAnimationDropDown((style, item) => (
-		<animated.li style={style}>{item}</animated.li>
+	return propsAnimationDropDown((style, items) => (
+		<animated.li className="liTechnologies" style={style}>{items}</animated.li>
 	));
 };
 

@@ -23,46 +23,51 @@ const _FetchRepos = _.memoize((dispatch) => {
 		});
 });
 
-export const fetchRepoTechnologies = (name) => (dispatch) =>
-	_fetchRepoTechnologies(name, dispatch);
-const _fetchRepoTechnologies = _.memoize((name, dispatch) => {
+export const fetchRepoTechnologies = (name) => (dispatch) => {
+	const makeArgument = { name: name, dispatch: dispatch };
+	_fetchRepoTechnologies(makeArgument);
+};
+const _fetchRepoTechnologies = _.memoize((makeArgument) => {
 	github
-		.get(`https://api.github.com/repos/hlasensky/${name}/contents/package.json`)
+		.get(
+			`https://api.github.com/repos/hlasensky/${makeArgument.name}/contents/package.json`
+		)
 		.then((res) => {
 			const content = Buffer.from(res.data.content, "base64").toString();
 			const str = JSON.parse(content);
-			dispatch({
+			return makeArgument.dispatch({
 				type: "FETCH_REPO_TECHNOLOGIES",
 				payload: str.dependencies,
 			});
 		})
 		.catch((err) => {
-			dispatch({
+			return makeArgument.dispatch({
 				type: "FETCH_REPO_TECHNOLOGIES",
 				payload: {},
 			});
 		});
 });
 
-export const fetchRepoMoreDetail = (url) => (dispatch) =>
-	_fetchRepoMoreDetail(url, dispatch);
-const _fetchRepoMoreDetail = (url, dispatch) => {
+export const fetchRepoMoreDetail = (url) => (dispatch) => {
+	const makeArgument = { url: url, dispatch: dispatch };
+	_fetchRepoMoreDetail(makeArgument);
+};
+const _fetchRepoMoreDetail = _.memoize((makeArgument) => {
 	github
-		.get(url)
+		.get(makeArgument.url)
 		.then((res) => {
-			console.log(url)
-			dispatch({
+			return makeArgument.dispatch({
 				type: "FETCH_REPO_LANGUAGES",
 				payload: res.data,
 			});
 		})
 		.catch((err) => {
-			dispatch({
+			return makeArgument.dispatch({
 				type: "FETCH_REPO_LANGUAGES",
 				payload: {},
 			});
 		});
-};
+});
 
 export const activeNav = (nav) => {
 	return {

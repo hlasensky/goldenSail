@@ -54,10 +54,29 @@
     justify-content: flex-end;
 }
 
-.moreInfo {
+.chartAndImage {
 	width: 100%;
 	img {
 		width: 100%;
 		margin: 30px 0;
 	}
+}
+
+.technologies {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+	width: fit-content;
+}
+
+.dropDownArrow {
+	width: 2vw;
+	height: auto;
+	margin-left: 5px;
+}
+
+.liTechnologies {
+	font-size: .9rem;
+	color: index.$font-color-doll;
 }

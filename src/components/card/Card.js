@@ -5,16 +5,13 @@ import { projectDetail } from "../../actions";
 
 import "./Card.scss";
 import Chart from "../chart/Chart";
-import DropDown from "./DropDown";
+import ShowTechnologies from "./Technologies";
 
 const Card = (props) => {
 	const [enter, setEnter] = useState(true);
 	const [technologies, setTechnologiesState] = useState([]);
-	const [open, setOpen] = useState(false);
 
 	const propsAnimation = useSpring({ width: enter ? 175 : 185 });
-	const propsAnimationArrow = useSpring({ transform: open ? " rotate(180deg)"
-	: "rotate(0deg))"});
 
 	useEffect(() => {
 		if (props.technologies) {
@@ -22,14 +19,14 @@ const Card = (props) => {
 			Object.entries(props.technologies).map(([key, value]) => {
 				return (newArr = [...newArr, key]);
 			});
-			setTechnologiesState([ ...newArr ]);
+			setTechnologiesState([...newArr]);
 		}
 	}, [props.technologies]);
 
-	const showMoreInfo = () => {
+	const showChartAndImage = () => {
 		if (props.languages) {
 			return (
-				<div className="moreInfo">
+				<div className="chartAndImage">
 					<img src={`${props.name}.png`} alt=""></img>
 					<div className="cardChart">
 						<Chart
@@ -42,26 +39,15 @@ const Card = (props) => {
 		}
 	};
 
-	const showTechnologies = () => {
-		if (technologies.length !== 0) {
-			return (
-				<div className="technologies">
-					<animated.div onClick={() => setOpen(!open)}>
-						Technologies<animated.img  style={propsAnimationArrow} className="dropDownArrow" src="./dropDownArrow.svg" alt=""></animated.img>
-					</animated.div>
-					<ul><DropDown technologies={technologies} open={ open } /></ul>
-				</div>
-			);
-		}
-	};
-
 	return (
 		<div className="cardContainer">
 			<div className="ball"></div>
 			<div className="cardName">{props.name}</div>
 			<div className="cardDescription">{props.description}</div>
-			{showMoreInfo()}
-			{showTechnologies()}
+			<div className="moreInfo">
+				{showChartAndImage()}
+				<ShowTechnologies technologies={technologies} />
+			</div>
 			<animated.div
 				onMouseEnter={() => setEnter(!enter)}
 				onMouseLeave={() => setEnter(!enter)}

@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchRepos } from "../../actions/index";
-import useMeasure from "react-use-measure";
 
 import Card from "../card/Card";
 import CardDetail from "../cardDetail/CardDetail";
 
 import "./ListOfCards.scss";
 
-const ListOfCards = ({fetchRepos,newRepos, projectDetail,repos }) => {
-	const [ref, { height }] = useMeasure();
-
-
+const ListOfCards = ({ fetchRepos, newRepos, projectDetail, repos }) => {
 
 	useEffect(() => {
 		fetchRepos();
@@ -49,10 +45,10 @@ const ListOfCards = ({fetchRepos,newRepos, projectDetail,repos }) => {
 	} else {
 		return (
 			<div className="cardListContainerDetail">
-				<div style={{ height: height }} className="scrollReps">
+				<div className="scrollReps">
 					{mapCards(newRepos)}
 				</div>
-				<div ref={ref} className="detailRep">
+				<div className="detailRep">
 					{mapCardsPlusDetail(projectDetail)}
 				</div>
 			</div>
@@ -60,7 +56,6 @@ const ListOfCards = ({fetchRepos,newRepos, projectDetail,repos }) => {
 	}
 };
 const mapStateToProps = (state) => {
-	console.log(state);
 	return {
 		repos: state.repos,
 		projectDetail: state.projectDetail.clickedProject,

@@ -24,7 +24,7 @@ const CardDetail = ({
 	fetchRepoTechnologies,
 }) => {
 	useEffect(() => {
-		console.log(name)
+		
 		fetchRepoMoreDetail(languages_url);
 		/*fetchRepoMoreDetail(deployments_url);*/
 		fetchRepoTechnologies(name);

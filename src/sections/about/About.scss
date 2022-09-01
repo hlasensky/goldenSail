@@ -10,7 +10,9 @@
 .aboutContent {
 	width: 60vw;
 	font-size: 2.25rem;
-
+    @media only screen and (max-width: 800px) {
+        width: 80vw;
+	}
 }
 
 .gold {
