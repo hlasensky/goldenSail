@@ -62,6 +62,7 @@ const Email = ({ sendEmail }) => {
 					src="./arrow.svg"
 					style={props2}
 					className="arrow"
+					alt=""
 				></animated.img>
 				send
 			</animated.button>
