@@ -68,14 +68,12 @@
 }
 
 input:-webkit-autofill,
+input:-internal-autofill-selected,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
     transition: background-color 5000s ease-in-out 0s;
-    appearance: menulist-button;
-    background-color: index.$font-color-10 !important;
-    background: index.$font-color-10 !important;
-    -webkit-box-shadow: 0 0 0 30px index.$font-color-10 inset  !important;
+    background-color: index.$background-color!important;
     -webkit-text-fill-color: index.$font-color !important;
 }
 
