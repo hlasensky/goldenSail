@@ -33,7 +33,7 @@ const Card = (props) => {
 		if (props.languages) {
 			return (
 				<div className="chartAndImage">
-					<img src={`${props.name}.png`} alt=""></img>
+					<img src={`./${props.name}.png`} alt=""></img>
 					<div className="cardChart">
 						<Chart
 							key={props.languages}
