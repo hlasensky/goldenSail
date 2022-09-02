@@ -10,7 +10,8 @@ import "./About.scss";
 const About = ({ activeNav }) => {
 	const { ref: myRef, inView: myElementIsVisible } = useInView({
 		threshold: 0.01,
-	  });
+	});
+	
 	useEffect(() => {
 		if (myElementIsVisible) {
 			activeNav("about");
@@ -38,7 +39,6 @@ const About = ({ activeNav }) => {
 };
 
 const mapStateToProps = (state) => {
-	console.log(state.active)
 	return { active: state.active };
 };
 

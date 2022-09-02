@@ -1,30 +1,48 @@
 import { useInView } from "react-intersection-observer";
-import { activeNav, sendEmail } from "../../actions";
+import { activeNav } from "../../actions";
 import { connect } from "react-redux";
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 
 import Title from "../../components/title/Title";
 import Socials from "../../components/socials/Socials";
+import Email from "../../components/email/Email";
 
 import "./Contact.scss";
 
-const Contact = ({ activeNav, sendEmail }) => {
-	const [enter, setEnter] = useState(true);
-	const props = useSpring({
-		opacity: enter ? " 1" : "0",
-	});
-	const props2 = useSpring({
-		bottom: enter ? -5 : 4,
-		right: enter ? -25 : -20,
-		transform: enter
-			? " rotate(180deg) translateX(0px) scale(0.1)"
-			: "rotate(0deg) translateX(25px) scale(1)",
-	});
-
-	const refForm = useRef();
-
+const Contact = ({ activeNav, email }) => {
 	const { ref: myRef, inView: myElementIsVisible } = useInView();
+
+	const checkProps = useSpring({
+		from: { x: 0 },
+		x: email === "OK" ? 1 : 0,
+		config: { duration: 1500 },
+	});
+
+	const showCheck = () => {
+		if (email === "OK") {
+			return (
+				<animated.div
+					style={{
+						scale: checkProps.x.to({
+							range: [
+								0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
+								0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.98, 1,
+							],
+							output: [
+								0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1, 0.97,
+								0.9, 1.1, 0.9, 1.1, 1.03, 1, 0,
+							],
+						}),
+					}}
+					className="checkContainer"
+				>
+					<animated.img className="check" src="./check.svg" alt="" />
+				</animated.div>
+			);
+		}
+	};
+
 	useEffect(() => {
 		if (myElementIsVisible) {
 			activeNav("contact");
@@ -54,54 +72,8 @@ const Contact = ({ activeNav, sendEmail }) => {
 				</div>
 
 				<div className="socialHalf">
-					<form
-						className="contactForm"
-						onSubmit={sendEmail}
-						name="contact"
-						ref={refForm}
-					>
-						<div className="contactInputs">
-							<input
-								required
-								className="inp name"
-								name="name"
-								placeholder="name"
-								type="text"
-							/>
-							<input
-								required
-								className="inp email"
-								name="email"
-								placeholder="email"
-								type="email"
-							/>
-						</div>
-						<textarea
-							required
-							className="inp message"
-							name="message"
-							placeholder="message"
-							rows="5"
-						></textarea>
-						<br />
-						<animated.button
-							onMouseEnter={() => setEnter(!enter)}
-							onMouseLeave={() => setEnter(!enter)}
-							className="submit"
-							type="submit"
-						>
-							<animated.div
-								style={props}
-								className="submitBall"
-							></animated.div>
-							<animated.img
-								src="./arrow.svg"
-								style={props2}
-								className="arrow"
-							></animated.img>
-							send
-						</animated.button>
-					</form>
+					<Email />
+					{showCheck()}
 				</div>
 			</div>
 
@@ -120,4 +92,4 @@ const mapStateToProps = (state) => {
 	return { active: state.active, email: state.email };
 };
 
-export default connect(mapStateToProps, { activeNav, sendEmail })(Contact);
+export default connect(mapStateToProps, { activeNav })(Contact);

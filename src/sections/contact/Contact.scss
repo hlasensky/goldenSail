@@ -16,6 +16,7 @@
 }
 
 .socialHalf {
+    position: relative;
     width: 50%;
     min-width: 500px;
     @media only screen and (max-width: 650px) {
@@ -66,11 +67,16 @@
     outline:none;
 }
 
-input:-internal-autofill-selected {
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    transition: background-color 5000s ease-in-out 0s;
     appearance: menulist-button;
-    background-image: none !important;
-    background: none !important;
-    color: index.$font-color !important;
+    background-color: index.$font-color-10 !important;
+    background: index.$font-color-10 !important;
+    -webkit-box-shadow: 0 0 0 30px index.$font-color-10 inset  !important;
+    -webkit-text-fill-color: index.$font-color !important;
 }
 
 .submit {
@@ -100,4 +106,15 @@ input:-internal-autofill-selected {
 	right: -25px;
 	bottom: -5px;
 	border-radius: 50px;
+}
+
+.checkContainer {
+    position: absolute;
+    top: 25vh;
+    left: calc(50% - 25px);
+}
+
+.check {
+    width: 50px;
+    height: auto;
 }

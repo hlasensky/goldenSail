@@ -12,6 +12,7 @@ const Projects = ({ activeNav }) => {
 	const { ref: myRef, inView: myElementIsVisible } = useInView({
 		threshold: 0.3,
 	});
+	
 	useEffect(() => {
 		if (myElementIsVisible) {
 			activeNav("projects");
