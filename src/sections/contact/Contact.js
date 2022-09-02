@@ -65,6 +65,11 @@ const Contact = ({ activeNav, email }) => {
 						url={"https://www.instagram.com/_hlasensky_/"}
 					/>
 					<Socials
+						icon={"./linkedin.svg"}
+						text={"Tomáš Hlásenský"}
+						url={"https://www.linkedin.com/in/tom%C3%A1%C5%A1-hl%C3%A1sensk%C3%BD-36572a215/"}
+					/>
+					<Socials
 						icon={"./email.svg"}
 						text={"tomas.hlasensky@seznam.cz"}
 						url={"mailto: tomas.hlasensky@seznam.cz"}
