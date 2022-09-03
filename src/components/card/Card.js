@@ -60,7 +60,6 @@ const Card = (props) => {
 				onMouseLeave={() => setEnter(!enter)}
 				onClick={() => {
 					if (!props.html_url) {
-						props.ref.current.scrollIntoView();
 						props.projectDetail(props.id, props.repos);
 					} else {
 						window.open(props.html_url);
