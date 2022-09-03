@@ -6,7 +6,10 @@ const ShowTechnologies = ({ technologies }) => {
 	const [open, setOpen] = useState(false);
 
 	const propsAnimationArrow = useSpring({
-		transform: open ? " rotate(180deg)" : "rotate(0deg))",
+		config: { duration: 400 },
+		from: { transform: open ? "rotate(0deg)" : "rotate(180deg)"},
+		to: [ { transform: open ? "rotate(180deg)" : "rotate(0deg)"} ],
+		reset: open,
 	});
 
 	if (technologies.length !== 0) {
@@ -26,9 +29,9 @@ const ShowTechnologies = ({ technologies }) => {
 				</ul>
 			</div>
 		);
-    } else {
-        return null
-    }
+	} else {
+		return null;
+	}
 };
 
 export default ShowTechnologies;

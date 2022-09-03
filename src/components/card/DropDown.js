@@ -13,7 +13,7 @@ const DropDown = (props) => {
 		props.open ? props.technologies : [],
 		{
 			ref: transApi,
-			trail: 50,
+			trail: 35,
 			from: { opacity: 0, display: "none" },
 			enter: { opacity: 1, display: "block" },
 			leave: { opacity: 0, display: "none" },

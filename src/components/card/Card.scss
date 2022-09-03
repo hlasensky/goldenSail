@@ -28,6 +28,7 @@
 	bottom: 8px;
 	position: absolute;
 	transition: 150ms;
+	cursor: pointer;
 	:hover > & {
 		color: index.$font-color-doll;
 	}
@@ -73,6 +74,7 @@
 	align-items: flex-start;
 	flex-direction: column;
 	width: fit-content;
+	cursor: pointer;
 }
 
 .dropDownArrow {

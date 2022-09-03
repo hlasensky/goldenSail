@@ -2,6 +2,7 @@
 
 .homeContainer {
 	grid-column-start: 2 !important;
+	overflow: hidden;
 	@media only screen and (max-width: 800px) {
 		grid-column-start: 1 !important;
 		display: flex;

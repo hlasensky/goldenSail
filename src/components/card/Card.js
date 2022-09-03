@@ -11,7 +11,7 @@ const Card = (props) => {
 	const [enter, setEnter] = useState(true);
 	const [technologies, setTechnologiesState] = useState([]);
 	const [windowWidth , setWindowWidth] = useState(1920);
-
+	
 	const propsAnimation = useSpring({ width: enter ? 175 : 185 });
 	const propsAnimation2 = useSpring({ width: enter ? 100 : 120 });
 
@@ -60,6 +60,7 @@ const Card = (props) => {
 				onMouseLeave={() => setEnter(!enter)}
 				onClick={() => {
 					if (!props.html_url) {
+						props.ref.current.scrollIntoView();
 						props.projectDetail(props.id, props.repos);
 					} else {
 						window.open(props.html_url);

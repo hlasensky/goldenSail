@@ -23,8 +23,8 @@ const CardDetail = ({
 	technologies,
 	fetchRepoTechnologies,
 }) => {
+
 	useEffect(() => {
-		
 		fetchRepoMoreDetail(languages_url);
 		/*fetchRepoMoreDetail(deployments_url);*/
 		fetchRepoTechnologies(name);
@@ -60,4 +60,7 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { fetchRepoMoreDetail, fetchRepoTechnologies })(CardDetail);
+export default connect(mapStateToProps, {
+	fetchRepoMoreDetail,
+	fetchRepoTechnologies,
+})(CardDetail);
