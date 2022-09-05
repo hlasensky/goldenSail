@@ -10,6 +10,13 @@ $gold-color: #c08d2c;
 $font: "Inter", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
 	"Droid Sans", "Helvetica Neue", sans-serif;
 
+
+@font-face {
+	font-family: "Inter";
+	src: url("./font/Inter-Regular.ttf") format("ttf");
+	src: url("./font/Inter-VariableFont_slnt,wght.ttf") format("ttf");
+}
+
 html {
 	scroll-behavior: smooth;
 	@media only screen and (max-width: 1025px) {
