@@ -11,8 +11,6 @@ import reducers from "./reducers"
 
 import "babel-polyfill"
 
-
-
 const store = createStore(reducers, applyMiddleware(thunk))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
