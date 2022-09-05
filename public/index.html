@@ -10,7 +10,7 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%PUBLIC_URL%/favicon.ico" type="image/x-icon" />
 		<script src="https://ft-polyfill-service.herokuapp.com/v2/polyfill.min.js"></script>
-		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width" />
 		<meta name="theme-color" content="#071125" />
 		<meta
 			name="description"
@@ -25,8 +25,25 @@
 			property="og:image"
 			content="https://thlasensky.netlify.app/goldenSail.png"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css"
+		/>
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"
+		></script>
+		<script type="text/javascript">
+			algoliasearchNetlify({
+				appId: "C74V5ZGOS0",
+				apiKey: "<YOUR_ALGOLIA_SEARCH_API_KEY>",
+				siteId: "2f6fd9ea-2364-496e-92e5-dc16c58e5ef9",
+				branch: "master",
+				selector: "div#search",
+			});
+		</script>
 		<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-		<title>Tomas Hlasensky | Portfolio | Projects | About | Contact </title>
+		<title>Tomas Hlasensky | Portfolio | Projects | About | Contact</title>
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
