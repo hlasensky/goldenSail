@@ -30,7 +30,7 @@ const Home = ({ activeNav }) => {
 					</h1>
 				</div>
 				<Spacer />
-				<div className="subTitle">web designer / programmer</div>
+				<h2 className="subTitle">web designer / programmer</h2>
 			</div>
 			<animated.div className="mtTrContainer">
 				<div className="miniTitle">
