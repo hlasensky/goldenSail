@@ -8,7 +8,6 @@ import CardDetail from "../cardDetail/CardDetail";
 import "./ListOfCards.scss";
 
 const ListOfCards = ({ fetchRepos, newRepos, projectDetail, repos }) => {
-
 	useEffect(() => {
 		fetchRepos();
 	}, [fetchRepos]);
@@ -27,6 +26,7 @@ const ListOfCards = ({ fetchRepos, newRepos, projectDetail, repos }) => {
 		description,
 		html_url,
 		languages_url,
+		deployments_url,
 	}) => {
 		return (
 			<CardDetail
@@ -36,6 +36,7 @@ const ListOfCards = ({ fetchRepos, newRepos, projectDetail, repos }) => {
 				description={description}
 				html_url={html_url}
 				languages_url={languages_url}
+				deployments_url={deployments_url}
 			/>
 		);
 	};
@@ -45,9 +46,7 @@ const ListOfCards = ({ fetchRepos, newRepos, projectDetail, repos }) => {
 	} else {
 		return (
 			<div className="cardListContainerDetail">
-				<div className="scrollReps">
-					{mapCards(newRepos)}
-				</div>
+				<div className="scrollReps">{mapCards(newRepos)}</div>
 				<div className="detailRep">
 					{mapCardsPlusDetail(projectDetail)}
 				</div>

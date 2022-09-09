@@ -38,6 +38,7 @@ const Card = (props) => {
 				<ShowChartAndImage
 					languages={props.languages}
 					name={props.name}
+					deployments={props.deployments}
 				/>
 				<ShowTechnologies technologies={technologies} />
 			</div>
@@ -59,6 +60,7 @@ const Card = (props) => {
 					className="hr"
 				></animated.svg>
 			</animated.div>
+			
 		</div>
 	);
 };

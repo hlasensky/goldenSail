@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import {
 	fetchRepoMoreDetail,
 	fetchRepoTechnologies,
+	fetchRepoDeployments
 } from "../../actions/index";
 
 import Card from "../card/Card";
-
-import "./CardDetail.scss";
 
 const CardDetail = ({
 	id,
@@ -16,25 +15,28 @@ const CardDetail = ({
 	html_url,
 	languages_url,
 	deployments_url,
-	fetchRepoMoreDetail,
 	languages,
 	deployments,
 	screenShot,
 	technologies,
+	
+	fetchRepoMoreDetail,
 	fetchRepoTechnologies,
+	fetchRepoDeployments
 }) => {
 
 	useEffect(() => {
 		fetchRepoMoreDetail(languages_url);
-		/*fetchRepoMoreDetail(deployments_url);*/
+		fetchRepoDeployments(deployments_url);
 		fetchRepoTechnologies(name);
 	}, [
 		id,
-		fetchRepoMoreDetail,
 		deployments_url,
 		languages_url,
 		name,
+		fetchRepoMoreDetail,
 		fetchRepoTechnologies,
+		fetchRepoDeployments
 	]);
 
 	return (
@@ -63,4 +65,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
 	fetchRepoMoreDetail,
 	fetchRepoTechnologies,
+	fetchRepoDeployments
 })(CardDetail);

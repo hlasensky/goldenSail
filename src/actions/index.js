@@ -69,6 +69,27 @@ const _fetchRepoMoreDetail = _.memoize((makeArgument) => {
 		});
 });
 
+export const fetchRepoDeployments = (url) => (dispatch) => {
+	const makeArgument = { url: url, dispatch: dispatch };
+	_fetchRepoDeployments(makeArgument);
+};
+const _fetchRepoDeployments = _.memoize((makeArgument) => {
+	github
+		.get(makeArgument.url)
+		.then((res) => {
+			return makeArgument.dispatch({
+				type: "FETCH_REPO_DEPLOYMENTS",
+				payload: res.data[0].payload.web_url,
+			});
+		})
+		.catch((err) => {
+			return makeArgument.dispatch({
+				type: "FETCH_REPO_DEPLOYMENTS",
+				payload: "",
+			});
+		});
+});
+
 export const activeNav = (nav) => {
 	return {
 		type: "ACTIVE_NAV",

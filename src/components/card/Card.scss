@@ -15,6 +15,11 @@
 	bottom: 20px;
 }
 
+.hrViewSite {
+	position: absolute;
+	margin-top: 10px;
+}
+
 .hr {
 	@include Spacer.theme;
 	transform: rotate(180deg);
@@ -64,7 +69,7 @@
 	width: 100%;
 	img {
 		width: 100%;
-		margin: 30px 0;
+		margin: 30px 0 10px 0;
 	}
 }
 
