@@ -4,20 +4,20 @@ import { connect } from "react-redux";
 import { projectDetail } from "../../actions";
 
 import "./Card.scss";
-import Chart from "../chart/Chart";
-import ShowTechnologies from "./Technologies";
+import ShowTechnologies from "../technologies/Technologies";
+import ShowChartAndImage from "../showChartAndImage/ShowChartAndImage";
 
 const Card = (props) => {
 	const [enter, setEnter] = useState(true);
 	const [technologies, setTechnologiesState] = useState([]);
-	const [windowWidth , setWindowWidth] = useState(1920);
-	
+	const [windowWidth, setWindowWidth] = useState(1920);
+
 	const propsAnimation = useSpring({ width: enter ? 175 : 185 });
 	const propsAnimation2 = useSpring({ width: enter ? 100 : 120 });
 
 	useEffect(() => {
-		setWindowWidth(window.innerWidth)
-	}, [])
+		setWindowWidth(window.innerWidth);
+	}, []);
 
 	useEffect(() => {
 		if (props.technologies) {
@@ -29,29 +29,16 @@ const Card = (props) => {
 		}
 	}, [props.technologies]);
 
-	const showChartAndImage = () => {
-		if (props.languages) {
-			return (
-				<div className="chartAndImage">
-					<img src={`./${props.name}.png`} alt=""></img>
-					<div className="cardChart">
-						<Chart
-							key={props.languages}
-							languages={props.languages}
-						/>
-					</div>
-				</div>
-			);
-		}
-	};
-
 	return (
 		<div className="cardContainer">
 			<div className="ball"></div>
 			<div className="cardName">{props.name}</div>
 			<div className="cardDescription">{props.description}</div>
 			<div className="moreInfo">
-				{showChartAndImage()}
+				<ShowChartAndImage
+					languages={props.languages}
+					name={props.name}
+				/>
 				<ShowTechnologies technologies={technologies} />
 			</div>
 			<animated.div

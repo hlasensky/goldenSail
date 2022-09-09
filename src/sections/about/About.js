@@ -23,16 +23,14 @@ const About = ({ activeNav }) => {
 			<Title title={"about me"} />
 			<img className="lines" src="./lines.svg" alt="lines" />
 			<p  className="aboutContent">
-				I am capable and responsible student eager for experience and
+				My name is Tomáš Hlásenský<span className="gold">.</span> I am a capable and responsible student eager for experience and
 				knowledge
 				<span className="gold">
 				.
-				</span> Learning new things and then implementing them is not a problem
+				</span> Learning new things and implementing them is not a problem
 				for me
 				<span className="gold">.</span> I am communicative
-				<span ref={myRef} className="gold">,</span> hardworking
-				<span className="gold">,</span> I like to work in a team or
-				independently<span className="gold">.</span>
+				<span ref={myRef} className="gold">,</span> hardworking and independent<span className="gold">.</span> I like to work in a teams<span className="gold">,</span> but I enjoy working alone<span className="gold">,</span> too<span className="gold">.</span>
 			</p>
 		</div>
 	);

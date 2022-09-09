@@ -5,7 +5,7 @@ const Socials = ({ icon, text, url }) => {
 		<a href={url} target="_blank" rel="noreferrer">
 			<div className="socialsContainer">
 				<img alt={text} className="icon" src={icon}/>
-				<div className="socialText">{ text }</div>
+				<h3 className="socialText">{ text }</h3>
 			</div>
 		</a>
 	);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import DropDown from "./DropDown";
+import DropDown from "../dropDown/DropDown";
 
 const ShowTechnologies = ({ technologies }) => {
 	const [open, setOpen] = useState(false);
