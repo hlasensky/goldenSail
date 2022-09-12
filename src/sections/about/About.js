@@ -19,10 +19,10 @@ const About = ({ activeNav }) => {
 	}, [myElementIsVisible, activeNav]);
 
 	return (
-		<div className="section about">
+		<div itemscope itemtype="https://schema.org/about" className="section about">
 			<Title title={"about me"} />
 			<img className="lines" src="./lines.svg" alt="lines" />
-			<p  className="aboutContent">
+			<p itemprop="description" className="aboutContent">
 				My name is Tomáš Hlásenský<span className="gold">.</span> I am a capable and responsible student eager for experience and
 				knowledge
 				<span className="gold">

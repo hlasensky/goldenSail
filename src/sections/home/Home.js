@@ -23,7 +23,7 @@ const Home = ({ activeNav }) => {
 		<div id="home" className="section homeContainer">
 			<div>
 				<div className="nameContainer">
-					<h1 ref={myRef}>
+					<h1 itemprop="name" ref={myRef}>
 						TOMÁŠ
 						<br />
 						HLÁSENSKÝ

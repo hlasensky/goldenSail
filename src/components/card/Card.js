@@ -30,12 +30,13 @@ const Card = (props) => {
 	}, [props.technologies]);
 
 	return (
-		<div className="cardContainer">
+		<div  className="cardContainer">
 			<div className="ball"></div>
-			<div className="cardName">{props.name}</div>
-			<div className="cardDescription">{props.description}</div>
+			<div className="cardName" itemprop="name">{props.name}</div>
+			<div className="cardDescription" itemprop="description">{props.description}</div>
 			<div className="moreInfo">
 				<ShowChartAndImage
+					itemprop="photo"
 					languages={props.languages}
 					name={props.name}
 					deployments={props.deployments}
@@ -43,6 +44,7 @@ const Card = (props) => {
 				<ShowTechnologies technologies={technologies} />
 			</div>
 			<animated.div
+				itemprop="url"
 				className="hrViewMore"
 				onMouseEnter={() => setEnter(!enter)}
 				onMouseLeave={() => setEnter(!enter)}

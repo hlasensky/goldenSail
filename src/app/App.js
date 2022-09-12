@@ -8,7 +8,7 @@ import "./App.scss";
 
 const App = () => {
 	return (
-		<div className="App">
+		<div itemscope itemtype="https://schema.org/CreativeWork" className="App">
 			<div className="logoContainer">
 				<a href="#home"><img  src="./logo.svg" alt="Logo" /></a>
 			</div>
