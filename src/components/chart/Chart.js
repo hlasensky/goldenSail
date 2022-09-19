@@ -7,6 +7,7 @@ const Chart = ({ languages }) => {
 	const [languageState, setLanguageState] = useState([]);
 
 	useEffect(() => {
+		//making new object for languages that is acceptable for PieChart
 		let newArr = [];
 		Object.entries(languages).map(([key, value]) => {
 			const newObj = {};

@@ -20,6 +20,7 @@ const Card = (props) => {
 	}, []);
 
 	useEffect(() => {
+		//saving technologies to state
 		if (props.technologies) {
 			let newArr = [];
 			Object.entries(props.technologies).map(([key, value]) => {

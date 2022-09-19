@@ -19,13 +19,14 @@ const CardDetail = ({
 	deployments,
 	screenShot,
 	technologies,
-	
+
 	fetchRepoMoreDetail,
 	fetchRepoTechnologies,
 	fetchRepoDeployments
 }) => {
 
 	useEffect(() => {
+		//fetching more data
 		fetchRepoMoreDetail(languages_url);
 		fetchRepoDeployments(deployments_url);
 		fetchRepoTechnologies(name);

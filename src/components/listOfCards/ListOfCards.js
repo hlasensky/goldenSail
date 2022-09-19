@@ -41,9 +41,11 @@ const ListOfCards = ({ fetchRepos, newRepos, projectDetail, repos }) => {
 		);
 	};
 
-	if (!projectDetail.id) {
+	if (!projectDetail.id) { 
+		// show all repos
 		return <div className="cardListContainer">{mapCards(repos)}</div>;
 	} else {
+		// show detail of clicked repo plus rest of the repos
 		return (
 			<div className="cardListContainerDetail">
 				<div className="scrollReps">{mapCards(newRepos)}</div>

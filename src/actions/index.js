@@ -4,7 +4,7 @@ import { Buffer } from "buffer";
 
 import github from "../apis/github";
 
-export const fetchRepos = () => (dispatch) => _FetchRepos(dispatch);
+export const fetchRepos = () => (dispatch) => _FetchRepos(dispatch); //fetch repositories from github api and memoize them
 const _FetchRepos = _.memoize((dispatch) => {
 	github
 		.get("/users/hlasensky/repos")
@@ -27,7 +27,7 @@ export const fetchRepoTechnologies = (name) => (dispatch) => {
 	const makeArgument = { name: name, dispatch: dispatch };
 	_fetchRepoTechnologies(makeArgument);
 };
-const _fetchRepoTechnologies = _.memoize((makeArgument) => {
+const _fetchRepoTechnologies = _.memoize((makeArgument) => { //fetching technologies from package.json for clicked repo 
 	github
 		.get(
 			`https://api.github.com/repos/hlasensky/${makeArgument.name}/contents/package.json`
@@ -52,7 +52,7 @@ export const fetchRepoMoreDetail = (url) => (dispatch) => {
 	const makeArgument = { url: url, dispatch: dispatch };
 	_fetchRepoMoreDetail(makeArgument);
 };
-const _fetchRepoMoreDetail = _.memoize((makeArgument) => {
+const _fetchRepoMoreDetail = _.memoize((makeArgument) => { //fetching languages used in clicked repo
 	github
 		.get(makeArgument.url)
 		.then((res) => {
@@ -73,7 +73,7 @@ export const fetchRepoDeployments = (url) => (dispatch) => {
 	const makeArgument = { url: url, dispatch: dispatch };
 	_fetchRepoDeployments(makeArgument);
 };
-const _fetchRepoDeployments = _.memoize((makeArgument) => {
+const _fetchRepoDeployments = _.memoize((makeArgument) => { //fetching deployment url for clicked repo
 	github
 		.get(makeArgument.url)
 		.then((res) => {
@@ -90,14 +90,14 @@ const _fetchRepoDeployments = _.memoize((makeArgument) => {
 		});
 });
 
-export const activeNav = (nav) => {
+export const activeNav = (nav) => { //storing name of section that is currently showing
 	return {
 		type: "ACTIVE_NAV",
 		payload: nav,
 	};
 };
 
-export const projectDetail = (projectID, repos) => {
+export const projectDetail = (projectID, repos) => {//storing repo that is currently clicked
 	const clickedProject = repos.filter((repo) => repo.id === projectID);
 	const newRepos = [
 		...repos.filter((repo) => repo.id !== clickedProject[0].id),
@@ -108,7 +108,7 @@ export const projectDetail = (projectID, repos) => {
 	};
 };
 
-export const sendEmail = (e) => (dispatch) => {
+export const sendEmail = (e) => (dispatch) => { // sending email
 	const envVar = process.env.REACT_APP_PUBLIC_KEY;
 	e.preventDefault();
 
