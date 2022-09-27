@@ -1,5 +1,5 @@
 # goldenSail
-My new portfolio website using ### `React` and ### `Redux` with other technologies to showcase my skills.
+My new portfolio website using `React` and `Redux` with other technologies to showcase my skills.
 
 
 # Getting Started with Create React App
